@@ -1,13 +1,16 @@
 "use client";
+import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
   const pathname = usePathname();
+  const { data: session, status } = useSession();
 
   return (
-    <div className="w-full">
+    <div className="w-full border-b border-[#e5e7eb]">
       {/* upper nav */}
       <div className="bg-gray-900  text-white">
         <div className="w-[1280px] mx-auto h-12 flex items-center justify-between">
@@ -99,15 +102,34 @@ const Navbar = () => {
                 fill="#fff"
               />
             </svg>
-            <span>
-              <Link href="/api/auth/login" className="text-sm hover:underline">
-                Login
-              </Link>
-              {" / "}
-              <Link href="/api/auth/login" className="text-sm hover:underline">
-                Register
-              </Link>
-            </span>
+
+            {status === "authenticated" ? (
+              <button
+                onClick={() => {
+                  signOut({ callbackUrl: "/" });
+                  toast.success("Logout Successful");
+                }}
+                className="text-sm text-red-500 hover:underline"
+              >
+                Logout
+              </button>
+            ) : (
+              <span>
+                <Link
+                  href="/api/auth/login"
+                  className="text-sm hover:underline"
+                >
+                  Login
+                </Link>
+                {" / "}
+                <Link
+                  href="/api/auth/login"
+                  className="text-sm hover:underline"
+                >
+                  Register
+                </Link>
+              </span>
+            )}
           </div>
         </div>
       </div>

@@ -1,17 +1,11 @@
 @import "tailwindcss";
 
-:root {
-  box-sizing: border-box;
-}
-
 @theme inline {
   --color-primary: #3758f9;
 }
-
 body {
   font-family: "DM Sans", sans-serif;
 }
-
 button {
   cursor: pointer;
 }

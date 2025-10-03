@@ -1,19 +1,20 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
+import Loader from "@/components/Loader";
 
-const Register = () => {
+const Login = () => {
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm();
-  const router = useRouter();
-
   const [showPassword, setShowPassword] = useState(false);
+  const router = useRouter();
+  const { data: session, status } = useSession();
 
   const userLogin = async (data) => {
     const { email, password } = data;
@@ -31,6 +32,16 @@ const Register = () => {
       toast.error("Invalid credentials");
     }
   };
+
+  useEffect(() => {
+    if (status === "authenticated") {
+      router.push("/");
+    }
+  }, [status, router]);
+
+  if (status === "loading") {
+    return <Loader />;
+  }
 
   return (
     <div className="w-full min-h-screen bg-[#f3f4f6] text-white50">
@@ -144,4 +155,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Login;
