@@ -2,9 +2,11 @@
 
 @theme inline {
   --color-primary: #3758f9;
+  --color-customBlack: #1f2937;
 }
 body {
   font-family: "DM Sans", sans-serif;
+  color: var(--color-customBlack);
 }
 button {
   cursor: pointer;

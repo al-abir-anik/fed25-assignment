@@ -4,6 +4,7 @@ import NextAuthSessionProvider from "@/providers/NextAuthSessionProvider";
 import { Toaster } from "react-hot-toast";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { AppContextProvider } from "@/contexts/AppContext";
 
 const dmSans = DM_Sans({
   variable: "--font-dmSans",
@@ -22,11 +23,13 @@ export default function RootLayout({ children }) {
       <body
         className={`${dmSans.variable} flex flex-col min-h-screen antialiased`}
       >
-        <NextAuthSessionProvider>
-          <Navbar />
-          <main className="grow">{children}</main>
-          <Footer />
-        </NextAuthSessionProvider>
+        <AppContextProvider>
+          <NextAuthSessionProvider>
+            <Navbar />
+            <main className="grow">{children}</main>
+            <Footer />
+          </NextAuthSessionProvider>
+        </AppContextProvider>
         <Toaster position="top-center" reverseOrder={false} />
       </body>
     </html>
