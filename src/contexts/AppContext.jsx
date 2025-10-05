@@ -10,6 +10,8 @@ export const useAppContext = () => {
 export const AppContextProvider = ({ children }) => {
   const [search, setSearch] = useState("");
 
+  
+
   const appInfo = {
     search,
     setSearch,

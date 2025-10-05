@@ -1,12 +1,11 @@
 import Image from "next/image";
-import Link from "next/link";
 
 const ProductCard = ({ product }) => {
   return (
     <div className="w-full space-y-4">
       <div className="w-full pb-[110%] flex items-center justify-center group relative bg-[#f6f7fb] rounded-lg overflow-hidden">
         <Image
-          src={product.images[0]}
+          src={product.image}
           alt={product.name}
           className="w-full h-full p-5 group-hover:scale-105 transition object-contain absolute top-0 left-0"
           width={800}
@@ -31,7 +30,7 @@ const ProductCard = ({ product }) => {
 
         <button
           type="button"
-          className="w-full py-2.5 px-4 font-medium border border-[#d1d5db] rounded-lg flex justify-center gap-2.5 items-center bg-transparent hover:bg-primary hover:text-white group"
+          className="w-full py-2 px-4 font-medium border border-[#d1d5db] rounded-lg flex justify-center gap-2.5 items-center bg-transparent hover:bg-primary hover:text-white group"
         >
           <svg
             width="24"
