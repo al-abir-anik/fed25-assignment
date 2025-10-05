@@ -3,6 +3,7 @@ import { FaFacebook } from "react-icons/fa";
 import { RiTwitterXFill } from "react-icons/ri";
 import { RiInstagramFill } from "react-icons/ri";
 import { FaLinkedin } from "react-icons/fa";
+import { LuHeadset } from "react-icons/lu";
 
 const Footer = () => {
   const socialLinks = [
@@ -34,7 +35,7 @@ const Footer = () => {
       {/* upper footer */}
       <div className="container mx-auto py-28 px-8 flex justify-between">
         {/* 1 */}
-        <div className="">
+        <div className="w-[32%] flex flex-col justify-between">
           <div className="space-y-7">
             <Image src="/logo.png" alt="logo" width={120} height={28} />
             <p className="text-[#6b7280]">
@@ -42,9 +43,9 @@ const Footer = () => {
               create beautiful websites based on Tailwind CSS.
             </p>
           </div>
-          <div>
-            <p className="text-[#6b7280]">Follow us on</p>
-            <span className="space-x-2">
+          <div className="space-y-3">
+            <p className="text-[#6b7280] font-medium">Follow us on</p>
+            <span className="flex gap-5">
               {socialLinks.map((link, index) => (
                 <button
                   key={index}
@@ -57,19 +58,105 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* 2 */}
-        <div>
-          <h2 className="text-xl font-semibold">Clothing</h2>
-          <ul>
-            {clothing.map((link) => (
-              <li>{link}</li>
-            ))}
-          </ul>
+        <div className="w-[60%] flex justify-between">
+          {/* 2 */}
+          <div className="space-y-6">
+            <h2 className="text-xl font-semibold">Clothing</h2>
+            <ul className="space-y-3">
+              {clothing.map((link) => (
+                <li key={link} className="font-medium text-[#6b7280]">
+                  {link}
+                </li>
+              ))}
+            </ul>
+          </div>
+          {/* 3 */}
+          <div className="space-y-6">
+            <h2 className="text-xl font-semibold">Shoes</h2>
+            <ul className="space-y-3">
+              {shoes.map((link) => (
+                <li key={link} className="font-medium text-[#6b7280]">
+                  {link}
+                </li>
+              ))}
+            </ul>
+          </div>
+          {/* 4 */}
+          <div className="space-y-8">
+            <div className="space-y-2">
+              <h2 className="text-xl font-semibold">Newsletter</h2>
+              <p className="text-[#6b7280]">
+                Signup for latest news and insights from TailGrids
+              </p>
+            </div>
+            <form className="space-y-3">
+              <input
+                type="email"
+                placeholder="email address"
+                className="w-full py-2.5 px-4 border border-[#d1d5db] outline-primary rounded-xl"
+              />
+              <button
+                type="submit"
+                className="w-full py-2.5 px-4 bg-primary text-white font-medium rounded-xl"
+              >
+                Subscribe
+              </button>
+            </form>
+          </div>
         </div>
       </div>
 
       {/* lower footer */}
-      <div></div>
+      <div className="w-full bg-white">
+        <div className="container mx-auto px-8 flex flex-col">
+          {/* 1 */}
+          <div className="py-8 flex justify-between">
+            <div className="flex items-center gap-4">
+              <div className="w-10 h-10 grid place-items-center bg-[#F3F4F6] text-2xl text-[#374151] rounded-lg">
+                <LuHeadset />
+              </div>
+              <div className="space-y-1">
+                <p className="text-sm text-[#6b7280]">8:30 AM - 10:30 PM</p>
+                <p className="font-semibold">+16283998030</p>
+              </div>
+            </div>
+
+            <div className="flex gap-5">
+              <div className="space-y-1">
+                <h3 className="text-lg font-semibold">Download Now on</h3>
+                <p className="text-sm text-[#6B7280]">
+                  Free home delivery on your first purchase
+                </p>
+              </div>
+              <div className="py-1 flex gap-2.5">
+                <img src="/google play.png" alt="google play store" />
+                <img src="/app store.png" alt="app store" />
+              </div>
+            </div>
+
+            <div className="space-y-3">
+              <h3 className="font-medium">We Support</h3>
+              <div className="flex gap-4">
+                <img src="/mastercard logo.png" alt="card" />
+                <img src="/visa logo.png" alt="card" />
+                <img src="/paypal logo.png" alt="card" />
+                <img src="/amex logo.png" alt="card" />
+                <img src="/westernunion logo.png" alt="card" />
+              </div>
+            </div>
+          </div>
+
+          {/* 2 */}
+          <div className="py-5 flex justify-between border-t border-[#F3F4F6]">
+            <p>© Copyright 2025 - TailGrids.</p>
+            <span className="text-[#6b7280] space-x-8">
+              <button>Refund Policy</button>
+              <button>Terms of Services</button>
+              <button>Shipping policy</button>
+            </span>
+          </div>
+        </div>
+      </div>
     </footer>
   );
 };

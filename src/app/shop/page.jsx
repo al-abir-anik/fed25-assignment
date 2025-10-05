@@ -1,12 +1,12 @@
 "use client";
 import { productDummyData } from "@/assets/assets";
+import Loader from "@/components/Loader";
 import ProductCard from "@/components/ProductCard";
 import { useAppContext } from "@/contexts/AppContext";
 import { useEffect, useState } from "react";
 
 const Shop = () => {
   const { search } = useAppContext();
-  const [allProducts, setAllProducts] = useState([1,2,11,]);
   const [fetchLoading, setFetchLoading] = useState(false);
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [selectedSubCategories, setSelectedSubCategories] = useState([]);
@@ -60,6 +60,25 @@ const Shop = () => {
   //   fetchProducts();
   // }, [search, selectedCategories, selectedSubCategories]);
 
+  const [allProducts, setAllProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const res = await fetch("/api/products");
+        const data = await res.json();
+        setAllProducts(data);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
   const handleCategoryChange = (e) => {
     const { value, checked } = e.target;
     setSelectedCategories((prev) =>
@@ -74,6 +93,10 @@ const Shop = () => {
       checked ? [...prev, value] : prev.filter((c) => c !== value)
     );
   };
+
+  if (loading) {
+    return <Loader />;
+  }
 
   return (
     <div className="max-w-[1280px] mx-auto min-h-[80vh] flex flex-col lg:flex-row gap-6 sm:gap-10 mt-4 lg:mt-12 mb-16">
@@ -143,7 +166,7 @@ const Shop = () => {
           </p>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-4 gap-8 gap-y-8">
-            {productDummyData.map((product, index) => (
+            {allProducts.map((product, index) => (
               <ProductCard key={index} product={product}></ProductCard>
             ))}
           </div>
