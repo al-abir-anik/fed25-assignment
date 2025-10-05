@@ -16,7 +16,7 @@ const Search = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="h-10 pl-3 flex items-center text-sm border border-gray-300 rounded-full overflow-hidden"
+      className="h-10 pl-3 flex items-center text-sm bg-white border border-gray-300 rounded-full overflow-hidden"
     >
       <input
         type="search"

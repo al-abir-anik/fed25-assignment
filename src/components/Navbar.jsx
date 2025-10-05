@@ -1,26 +1,47 @@
 "use client";
-import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import { usePathname } from "next/navigation";
-import toast from "react-hot-toast";
+import { signOut, useSession } from "next-auth/react";
 import Search from "./Search";
+import toast from "react-hot-toast";
+import { RiMenu2Fill } from "react-icons/ri";
+import { IoClose } from "react-icons/io5";
+import { IoIosArrowDown } from "react-icons/io";
+import { GoGlobe } from "react-icons/go";
 
 const Navbar = () => {
   const pathname = usePathname();
   const { data: session, status } = useSession();
+  const [openMobileMenu, setOpenMobileMenu] = useState(false);
 
   return (
     <div className="w-full border-b border-[#e5e7eb]">
       {/* upper nav */}
-      <div className="bg-gray-900  text-white">
-        <div className="max-w-[1280px] mx-auto h-12 flex items-center justify-between">
-          <div className="flex gap-5">
-            <span className="flex items-center gap-1.5">
+      <div className="bg-gray-900 text-white">
+        <div className="max-w-[1280px] mx-auto px-4 py-2 md:py-3 flex flex-col md:flex-row items-center justify-between gap-3 md:gap-0">
+          {/* currency */}
+          <div className="w-full md:w-fit flex justify-between">
+            <div className="flex items-center gap-5">
+              <span className="flex items-center gap-1.5">
+                <GoGlobe className="text-base" />
+                <p className="text-sm">English</p>
+                <IoIosArrowDown className="text-base" />
+              </span>
+              <span className="flex items-center gap-1.5">
+                <Image src="/US.png" alt="us flag" width={16} height={16} />
+                <p className="text-sm">USD</p>
+                <IoIosArrowDown className="text-base" />
+              </span>
+            </div>
+
+            {/* Login / Logout */}
+            <div className="flex md:hidden items-center gap-2">
               <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
+                width="18"
+                height="18"
+                viewBox="0 0 25 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
                 transform="rotate(0 0 0)"
@@ -28,51 +49,49 @@ const Navbar = () => {
                 <path
                   fillRule="evenodd"
                   clipRule="evenodd"
-                  d="M2.00312 12.1255C2.07025 17.59 6.52083 22.0001 12.0014 22.0001C17.5238 22.0001 22.0005 17.5224 22.0005 12.0002C22.0005 6.49245 17.5473 2.02384 12.0449 2.00038C12.0304 2.00013 12.0158 2 12.0012 2C11.9866 2 11.972 2.00013 11.9574 2.00038C6.49755 2.02389 2.07089 6.42415 2.00314 11.8733C2.00106 11.9151 2 11.9572 2 11.9996C2 12.0418 2.00105 12.0838 2.00312 12.1255ZM8.97906 8.97712C8.83291 9.91428 8.75196 10.9319 8.75196 11.9996C8.75196 13.0674 8.83291 14.0849 8.97906 15.0221C9.91569 15.168 10.9326 15.2489 11.9996 15.2489C13.0679 15.2489 14.086 15.1678 15.0235 15.0216C15.1696 14.0845 15.2505 13.0671 15.2505 11.9996C15.2505 10.932 15.1696 9.91466 15.0235 8.97764C14.086 8.83136 13.0679 8.75032 11.9996 8.75032C10.9326 8.75032 9.91568 8.83117 8.97906 8.97712ZM7.419 9.29819C7.30981 10.1594 7.25196 11.0661 7.25196 11.9996C7.25196 12.9331 7.30981 13.8398 7.419 14.701C6.8082 14.5418 6.25021 14.3524 5.75696 14.1391C4.976 13.8015 4.39155 13.4187 4.01306 13.0318C3.66763 12.6787 3.52335 12.3559 3.50265 12.072C3.50245 12.0481 3.50235 12.0242 3.50235 12.0002C3.50235 11.9758 3.50245 11.9514 3.50266 11.927C3.5234 11.6432 3.66769 11.3204 4.01306 10.9674C4.39155 10.5805 4.976 10.1978 5.75696 9.86009C6.25021 9.64683 6.8082 9.45746 7.419 9.29819ZM9.30032 7.4171C10.1609 7.30808 11.0669 7.25032 11.9996 7.25032C12.9336 7.25032 13.8407 7.30824 14.7023 7.41753C14.5431 6.8073 14.3538 6.24981 14.1407 5.75696C13.8031 4.976 13.4203 4.39155 13.0335 4.01306C12.6606 3.64825 12.3214 3.5078 12.0263 3.50032L12.0014 3.50028L11.9761 3.50032C11.6811 3.50781 11.3419 3.64827 10.969 4.01306C10.5821 4.39155 10.1994 4.976 9.86173 5.75696C9.64869 6.24969 9.45948 6.80704 9.30032 7.4171ZM16.5836 9.29907C16.6927 10.16 16.7505 11.0664 16.7505 11.9996C16.7505 12.9328 16.6927 13.8392 16.5836 14.7001C17.1931 14.5411 17.7499 14.352 18.2422 14.1391C19.0232 13.8015 19.6077 13.4187 19.9862 13.0318C20.3613 12.6483 20.4992 12.3005 20.4992 11.9996C20.4992 11.6987 20.3613 11.3509 19.9862 10.9674C19.6077 10.5805 19.0232 10.1978 18.2422 9.86009C17.7499 9.64723 17.1931 9.45816 16.5836 9.29907ZM14.7023 16.5817C13.8407 16.691 12.9336 16.7489 11.9996 16.7489C11.0669 16.7489 10.1609 16.6911 9.30032 16.5821C9.45948 17.1922 9.64869 17.7495 9.86173 18.2422C10.1994 19.0232 10.5821 19.6077 10.969 19.9862C11.3525 20.3613 11.7003 20.4992 12.0012 20.4992C12.3021 20.4992 12.65 20.3613 13.0335 19.9861C13.4203 19.6077 13.8031 19.0232 14.1407 18.2422C14.3538 17.7494 14.5431 17.1919 14.7023 16.5817ZM7.69311 16.3082C6.76016 16.1055 5.90633 15.8379 5.16168 15.5159C4.75227 15.3389 4.36866 15.1424 4.01951 14.9265C4.87777 17.2671 6.73603 19.1253 9.07661 19.9833C8.85983 19.6332 8.66253 19.2484 8.48491 18.8375C8.16319 18.0934 7.89575 17.2403 7.69311 16.3082ZM16.3095 16.3074C17.2411 16.1048 18.0938 15.8375 18.8375 15.5159C19.2488 15.3381 19.634 15.1406 19.9844 14.9236C19.1265 17.2657 17.2675 19.1252 14.9258 19.9835C15.1426 19.6333 15.3399 19.2484 15.5176 18.8375C15.8394 18.0932 16.1069 17.2399 16.3095 16.3074ZM19.9838 9.07529C19.6336 8.85838 19.2485 8.66098 18.8375 8.48327C18.0938 8.16171 17.2411 7.89437 16.3095 7.69177C16.1069 6.75934 15.8394 5.90596 15.5176 5.16168C15.3402 4.75137 15.1431 4.36698 14.9267 4.01722C17.2675 4.87548 19.1258 6.7342 19.9838 9.07529ZM7.69311 7.69102C6.76016 7.89372 5.90632 8.16132 5.16168 8.48327C4.75248 8.66019 4.36906 8.85663 4.02005 9.0724C4.87844 6.73282 6.73604 4.87536 9.0757 4.01737C8.85927 4.3671 8.66228 4.75144 8.48491 5.16168C8.16319 5.90577 7.89575 6.75888 7.69311 7.69102Z"
+                  d="M16.4337 6.35C16.4337 8.74 14.4937 10.69 12.0937 10.69L12.0837 10.68C9.69365 10.68 7.74365 8.73 7.74365 6.34C7.74365 3.95 9.70365 2 12.0937 2C14.4837 2 16.4337 3.96 16.4337 6.35ZM14.9337 6.34C14.9337 4.78 13.6637 3.5 12.0937 3.5C10.5337 3.5 9.25365 4.78 9.25365 6.34C9.25365 7.9 10.5337 9.18 12.0937 9.18C13.6537 9.18 14.9337 7.9 14.9337 6.34Z"
                   fill="#fff"
                 />
-              </svg>
-              <p className="text-sm">English</p>
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 25 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                transform="rotate(0 0 0)"
-              >
                 <path
-                  d="M5.54779 9.09467C5.84069 8.80178 6.31556 8.80178 6.60846 9.09467L12.3281 14.8143L18.0478 9.09467C18.3407 8.80178 18.8156 8.80178 19.1085 9.09467C19.4013 9.38756 19.4013 9.86244 19.1085 10.1553L12.8585 16.4053C12.5656 16.6982 12.0907 16.6982 11.7978 16.4053L5.54779 10.1553C5.2549 9.86244 5.2549 9.38756 5.54779 9.09467Z"
+                  d="M12.0235 12.1895C14.6935 12.1895 16.7835 12.9395 18.2335 14.4195V14.4095C20.2801 16.4956 20.2739 19.2563 20.2735 19.4344L20.2735 19.4395C20.2635 19.8495 19.9335 20.1795 19.5235 20.1795H19.5135C19.0935 20.1695 18.7735 19.8295 18.7735 19.4195C18.7735 19.3695 18.7735 17.0895 17.1535 15.4495C15.9935 14.2795 14.2635 13.6795 12.0235 13.6795C9.78346 13.6795 8.05346 14.2795 6.89346 15.4495C5.27346 17.0995 5.27346 19.3995 5.27346 19.4195C5.27346 19.8295 4.94346 20.1795 4.53346 20.1795C4.17346 20.1995 3.77346 19.8595 3.77346 19.4495L3.77345 19.4448C3.77305 19.2771 3.76646 16.506 5.81346 14.4195C7.26346 12.9395 9.35346 12.1895 12.0235 12.1895Z"
                   fill="#fff"
                 />
               </svg>
-            </span>
-            <span className="flex items-center gap-1.5">
-              <Image src="/US.png" alt="us flag" width={16} height={16} />
-              <p className="text-sm">USD</p>
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 25 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                transform="rotate(0 0 0)"
-              >
-                <path
-                  d="M5.54779 9.09467C5.84069 8.80178 6.31556 8.80178 6.60846 9.09467L12.3281 14.8143L18.0478 9.09467C18.3407 8.80178 18.8156 8.80178 19.1085 9.09467C19.4013 9.38756 19.4013 9.86244 19.1085 10.1553L12.8585 16.4053C12.5656 16.6982 12.0907 16.6982 11.7978 16.4053L5.54779 10.1553C5.2549 9.86244 5.2549 9.38756 5.54779 9.09467Z"
-                  fill="#fff"
-                />
-              </svg>
-            </span>
+
+              {status === "authenticated" ? (
+                <button
+                  onClick={() => {
+                    signOut({ callbackUrl: "/" });
+                    toast.success("Logout Successful");
+                  }}
+                  className="text-sm text-red-500 hover:underline"
+                >
+                  Logout
+                </button>
+              ) : (
+                <span className="text-sm flex gap-2">
+                  <Link href="/api/auth/login" className="hover:underline">
+                    Login
+                  </Link>
+                  /
+                  <Link href="/api/auth/login" className="hover:underline">
+                    Register
+                  </Link>
+                </span>
+              )}
+            </div>
           </div>
-          <p className="text-sm">
+
+          <p className="text-sm text-center md:text-base">
             Flash Sale Live <span className="font-medium">– 30% Off</span>{" "}
             Everything
           </p>
-          <div className="flex items-center gap-1.5">
+
+          {/* Login / Logout */}
+          <div className="hidden md:flex items-center gap-3">
             <svg
-              width="16"
-              height="16"
+              width="18"
+              height="18"
               viewBox="0 0 25 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -101,18 +120,12 @@ const Navbar = () => {
                 Logout
               </button>
             ) : (
-              <span>
-                <Link
-                  href="/api/auth/login"
-                  className="text-sm hover:underline"
-                >
+              <span className="text-sm flex gap-2">
+                <Link href="/api/auth/login" className="hover:underline">
                   Login
                 </Link>
-                {" / "}
-                <Link
-                  href="/api/auth/login"
-                  className="text-sm hover:underline"
-                >
+                /
+                <Link href="/api/auth/login" className="hover:underline">
                   Register
                 </Link>
               </span>
@@ -124,11 +137,19 @@ const Navbar = () => {
       {/* main nav */}
       <div className="py-4">
         <nav className="container mx-auto px-8 flex justify-between items-center">
-          <Link href="/">
-            <Image src="/logo.png" alt="logo" width={120} height={28} />
-          </Link>
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() => setOpenMobileMenu(!openMobileMenu)}
+              className="p-1 text-2xl text-[#323544] block lg:hidden"
+            >
+              {openMobileMenu ? <IoClose /> : <RiMenu2Fill />}
+            </button>
+            <Link href="/">
+              <Image src="/logo.png" alt="logo" width={120} height={28} />
+            </Link>
+          </div>
 
-          <div className="flex items-center gap-7 font-medium text-base text-[#1F2937]">
+          <div className="hidden lg:flex items-center gap-7 font-medium text-base text-[#1F2937]">
             <Link
               href="/"
               className={`hover:text-primary transition ${
@@ -161,7 +182,10 @@ const Navbar = () => {
           </div>
 
           <div className="flex items-center gap-3">
-            <Search />
+            {/* Search */}
+            <div className="hidden md:block">
+              <Search />
+            </div>
 
             <button>
               <svg
@@ -184,7 +208,6 @@ const Navbar = () => {
                 />
               </svg>
             </button>
-
             <div className="relative">
               <svg
                 width="24"
@@ -205,7 +228,6 @@ const Navbar = () => {
                 3
               </span>
             </div>
-
             <div className="relative">
               <svg
                 width="24"
@@ -235,6 +257,39 @@ const Navbar = () => {
                 3
               </span>
             </div>
+          </div>
+
+          {/* Small screen menus */}
+          <div
+            className={`${
+              openMobileMenu ? "flex" : "hidden"
+            } absolute top-30 left-0 w-full text-white bg-primary shadow-md py-5 flex-col items-center gap-4 px-5 md:hidden z-999`}
+          >
+            <div className="block sm:hidden">
+              <Search />
+            </div>
+
+            <Link
+              href="/"
+              onClick={() => setOpenMobileMenu(false)}
+              className="block"
+            >
+              Home
+            </Link>
+            <Link
+              href="/shop"
+              onClick={() => setOpenMobileMenu(false)}
+              className="block"
+            >
+              Shop
+            </Link>
+            <Link
+              href="/dashboard"
+              onClick={() => setOpenMobileMenu(false)}
+              className="block"
+            >
+              Dashboard
+            </Link>
           </div>
         </nav>
       </div>
