@@ -44,7 +44,7 @@ const Login = () => {
   }
 
   return (
-    <div className="w-full min-h-screen bg-[#f3f4f6] text-white50">
+    <div className="w-full min-h-[70vh] pb-10 grid place-items-center bg-[#f3f4f6] text-white50">
       <form
         onSubmit={handleSubmit(userLogin)}
         className="w-80 sm:w-[35rem] p-3 sm:p-6 md:p-10 flex flex-col gap-3 m-auto items-start rounded-lg border border-gray-200 bg-white"

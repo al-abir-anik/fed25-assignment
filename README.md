@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# FED25 - Mini Ecommerce Web App
 
-## Getting Started
+This is a **mini eCommerce web application** built for the FED25 assignment at Pimjo.  
+It includes a **Landing Page**, **Login Authentication**, and an **Ecommerce Dashboard** powered by **custom Next.js API routes**.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Authentication
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Email/password login (credentials: `admin@example.com / admin123`).
+- Login redirects to **Dashboard**, logout redirects to **Landing Page**.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### Landing Page
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Fully responsive (desktop, tablet, mobile).
+- Styled entirely with **Tailwind CSS**.
+- Includes **search and filter functionality** for product listings.
 
-## Learn More
+### Dashboard
 
-To learn more about Next.js, take a look at the following resources:
+- Accessible **only after login**.
+- Displays:
+  - **Summary cards** (Total Orders, Revenue, Customers).
+  - **Products table** (ID, Name, Price, Stock, Category).
+  - **Orders table** (ID, Customer, Amount, Status).
+- Supports **loading and error states** during API fetch.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### APIs
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `/api/products` → list of products
+- `/api/orders` → list of orders
+- `/api/stats` → summary stats
 
-## Deploy on Vercel
+## Tech Stack
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Frontend:** Next.js (App Router)
+- **Styling:** Tailwind CSS
+- **State Management:** React Hooks
+- **Data:** Mock in-memory JSON
+- **Auth:** NextAuth.js (credentials provider) OR custom API route
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Project Structure
+
+public/
+src/
+├─ app/
+│ ├─ api/
+│ │ ├─ auth/route.jsx
+│ │ ├─ orders/route.jsx
+│ │ ├─ products/route.jsx
+│ │ └─ stats/route.jsx
+│ ├─ dashboard/
+│ │ ├─ orders/page.jsx
+│ │ ├─ products/page.jsx
+│ │ └─ stats/page.jsx
+│ ├─ shop/ # Landing / shop page
+│ ├─ layout.jsx
+│ ├─ page.jsx # Homepage route
+│ ├─ not-found.jsx
+│ └─ loading.jsx
+│
+├─ assets/ # Images or static assets
+├─ components/ # Reusable UI components
+├─ contexts/ # Context API files (auth, theme, etc.)
+├─ providers/ # App providers (auth, theme, state)
+└─ style/
+└─ index.css # Global Tailwind CSS styles
