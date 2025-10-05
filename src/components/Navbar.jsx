@@ -14,7 +14,7 @@ const Navbar = () => {
     <div className="w-full border-b border-[#e5e7eb]">
       {/* upper nav */}
       <div className="bg-gray-900  text-white">
-        <div className="w-[1280px] mx-auto h-12 flex items-center justify-between">
+        <div className="max-w-[1280px] mx-auto h-12 flex items-center justify-between">
           <div className="flex gap-5">
             <span className="flex items-center gap-1.5">
               <svg
@@ -163,7 +163,7 @@ const Navbar = () => {
           <div className="flex items-center gap-3">
             <Search />
 
-            <Link href="/">
+            <button>
               <svg
                 width="24"
                 height="24"
@@ -183,7 +183,7 @@ const Navbar = () => {
                   fill="#343C54"
                 />
               </svg>
-            </Link>
+            </button>
 
             <div className="relative">
               <svg

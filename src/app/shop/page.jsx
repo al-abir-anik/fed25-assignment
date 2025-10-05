@@ -1,16 +1,16 @@
 "use client";
-import Loader from "@/components/Loader";
-import ProductCard from "@/components/ProductCard";
-import { useAppContext } from "@/contexts/AppContext";
 import { useEffect, useState } from "react";
+import { useAppContext } from "@/contexts/AppContext";
+import { productCategories } from "@/assets/assets";
+import ProductCard from "@/components/ProductCard";
+import Loader from "@/components/Loader";
 
 const Shop = () => {
-  const { search } = useAppContext(); // ✅ get search term from context
+  const { search } = useAppContext();
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [allProducts, setAllProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Fetch products from API
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -35,7 +35,7 @@ const Shop = () => {
     );
   };
 
-  // Filter products by category and search term
+  // Filter products by category and search
   const filteredProducts = allProducts.filter((product) => {
     const matchCategory =
       selectedCategories.length === 0 ||
@@ -46,14 +46,6 @@ const Shop = () => {
     return matchCategory && matchSearch;
   });
 
-  const productCategories = [
-    "Audio",
-    "Watch",
-    "Accessories",
-    "Security",
-    "Home decor",
-  ];
-
   if (loading) {
     return <Loader />;
   }
@@ -61,16 +53,16 @@ const Shop = () => {
   return (
     <div className="container mx-auto min-h-[80vh] px-8 flex flex-col lg:flex-row gap-6 sm:gap-10 mt-4 lg:mt-12 mb-16">
       {/* Filter Section */}
-      <div className="w-full sm:min-w-60 sm:w-60">
+      <div className="w-full sm:min-w-60 lg:w-60">
         <p className="my-2 text-xl font-medium flex items-center gap-2 sm:mb-4">
           FILTERS
         </p>
 
         <div className="px-5 py-3 mt-6 border border-gray-300">
           <p className="mb-3 text-sm font-medium">CATEGORIES</p>
-          <div className="space-y-3 text-sm font-light text-gray-700">
+          <div className="flex flex-wrap gap-4 lg:gap-0 lg:space-y-3 text-sm font-light text-gray-700">
             {productCategories.map((cat) => (
-              <label key={cat} className="flex gap-2">
+              <label key={cat} className="w-fit lg:w-full flex items-center gap-2">
                 <input
                   className="w-3 cursor-pointer"
                   type="checkbox"
@@ -99,7 +91,7 @@ const Shop = () => {
             No products found!
           </p>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-4 gap-12 gap-y-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 2xl:grid-cols-4 gap-12 gap-y-12">
             {filteredProducts.map((product, index) => (
               <ProductCard key={index} product={product} />
             ))}
