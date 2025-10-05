@@ -7,7 +7,7 @@ const CategoryShop = () => {
       <div className="container mx-auto px-8 py-20">
         {/* Heading */}
         <div className="w-full lg:w-2/5 space-y-4 mb-10 lg:mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold">
             Shop by Category
           </h2>
           <p className="text-sm sm:text-base text-[#6b7280]">
@@ -19,7 +19,7 @@ const CategoryShop = () => {
         {/* Categories Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
           {categoryShop.map((category) => (
-            <div key={category.name} className="sm:p-4 rounded-xl bg-white">
+            <div key={category.name} className="p-2 sm:p-4 rounded-xl bg-white">
               <div className="relative w-full pb-[110%] flex items-center justify-center group bg-[#f6f7fb] rounded-lg overflow-hidden">
                 <Image
                   src={category.image}

@@ -33,7 +33,7 @@ const BestSellers = () => {
   return (
     <div className="container mx-auto px-8 py-20">
       <div className="w-full mx-auto lg:w-2/5 space-y-4 mb-10 lg:mb-16 text-center">
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold whitespace-nowrap">
           Handpicked Highlights
         </h2>
         <p className="text-sm sm:text-base text-[#6b7280]">
