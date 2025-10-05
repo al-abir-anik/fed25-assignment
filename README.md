@@ -3,6 +3,12 @@
 This is a **mini eCommerce web application** built for the FED25 assignment at Pimjo.  
 It includes a **Landing Page**, **Login Authentication**, and an **Ecommerce Dashboard** powered by **custom Next.js API routes**.
 
+## 🔗 Live Demo
+
+👉 **Live Site:** [https://fed25-assignment.vercel.app/](https://fed25-assignment.vercel.app/)
+
+---
+
 ## Features
 
 ### Authentication
