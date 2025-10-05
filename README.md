@@ -47,6 +47,7 @@ It includes a **Landing Page**, **Login Authentication**, and an **Ecommerce Das
 
 ## Project Structure
 
+```bash
 public/
 src/
 ├─ app/
