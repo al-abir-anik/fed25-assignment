@@ -19,11 +19,15 @@ const Navbar = () => {
   return (
     <div className="w-full border-b border-[#e5e7eb]">
       {/* upper nav */}
-      <div className="bg-gray-900 text-white">
-        <div className="max-w-[1280px] mx-auto px-4 py-2 md:py-3 flex flex-col md:flex-row items-center justify-between gap-3 md:gap-0">
-          {/* currency */}
-          <div className="w-full md:w-fit flex justify-between">
-            <div className="flex items-center gap-5">
+      <div className="w-full bg-gray-900 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 xl:px-0 py-3 lg:py-3.5 flex justify-between items-center">
+          {/* currency & language */}
+          <div className="w-full lg:w-fit flex flex-col justify-center items-center gap-2">
+            <p className="block lg:hidden text-sm text-center">
+              Flash Sale Live <span className="font-medium">– 30% Off</span>{" "}
+              Everything
+            </p>
+            <div className="w-fit flex items-center gap-5">
               <span className="flex items-center gap-1.5">
                 <GoGlobe className="text-base" />
                 <p className="text-sm">English</p>
@@ -35,60 +39,15 @@ const Navbar = () => {
                 <IoIosArrowDown className="text-base" />
               </span>
             </div>
-
-            {/* Login / Logout */}
-            <div className="flex md:hidden items-center gap-2">
-              <svg
-                width="18"
-                height="18"
-                viewBox="0 0 25 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                transform="rotate(0 0 0)"
-              >
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M16.4337 6.35C16.4337 8.74 14.4937 10.69 12.0937 10.69L12.0837 10.68C9.69365 10.68 7.74365 8.73 7.74365 6.34C7.74365 3.95 9.70365 2 12.0937 2C14.4837 2 16.4337 3.96 16.4337 6.35ZM14.9337 6.34C14.9337 4.78 13.6637 3.5 12.0937 3.5C10.5337 3.5 9.25365 4.78 9.25365 6.34C9.25365 7.9 10.5337 9.18 12.0937 9.18C13.6537 9.18 14.9337 7.9 14.9337 6.34Z"
-                  fill="#fff"
-                />
-                <path
-                  d="M12.0235 12.1895C14.6935 12.1895 16.7835 12.9395 18.2335 14.4195V14.4095C20.2801 16.4956 20.2739 19.2563 20.2735 19.4344L20.2735 19.4395C20.2635 19.8495 19.9335 20.1795 19.5235 20.1795H19.5135C19.0935 20.1695 18.7735 19.8295 18.7735 19.4195C18.7735 19.3695 18.7735 17.0895 17.1535 15.4495C15.9935 14.2795 14.2635 13.6795 12.0235 13.6795C9.78346 13.6795 8.05346 14.2795 6.89346 15.4495C5.27346 17.0995 5.27346 19.3995 5.27346 19.4195C5.27346 19.8295 4.94346 20.1795 4.53346 20.1795C4.17346 20.1995 3.77346 19.8595 3.77346 19.4495L3.77345 19.4448C3.77305 19.2771 3.76646 16.506 5.81346 14.4195C7.26346 12.9395 9.35346 12.1895 12.0235 12.1895Z"
-                  fill="#fff"
-                />
-              </svg>
-
-              {status === "authenticated" ? (
-                <button
-                  onClick={() => {
-                    signOut({ callbackUrl: "/" });
-                    toast.success("Logout Successful");
-                  }}
-                  className="text-sm text-red-500 hover:underline"
-                >
-                  Logout
-                </button>
-              ) : (
-                <span className="text-sm flex gap-2">
-                  <Link href="/api/auth/login" className="hover:underline">
-                    Login
-                  </Link>
-                  /
-                  <Link href="/api/auth/login" className="hover:underline">
-                    Register
-                  </Link>
-                </span>
-              )}
-            </div>
           </div>
 
-          <p className="text-sm text-center md:text-base">
+          <p className="hidden lg:block text-sm text-center">
             Flash Sale Live <span className="font-medium">– 30% Off</span>{" "}
             Everything
           </p>
 
           {/* Login / Logout */}
-          <div className="hidden md:flex items-center gap-3">
+          <div className="hidden lg:flex items-center gap-3">
             <svg
               width="18"
               height="18"
@@ -136,11 +95,11 @@ const Navbar = () => {
 
       {/* main nav */}
       <div className="py-4">
-        <nav className="container mx-auto px-8 flex justify-between items-center">
-          <div className="flex items-center gap-3">
+        <nav className="max-w-7xl mx-auto px-3 sm:px-6 xl:px-0 flex justify-between items-center">
+          <div className="flex items-center gap-[22px]">
             <button
               onClick={() => setOpenMobileMenu(!openMobileMenu)}
-              className="p-1 text-2xl text-[#323544] block lg:hidden"
+              className="p-2 text-2xl text-[#323544] block lg:hidden"
             >
               {openMobileMenu ? <IoClose /> : <RiMenu2Fill />}
             </button>
@@ -181,7 +140,7 @@ const Navbar = () => {
             </Link>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="px-2 flex items-center gap-3">
             {/* Search */}
             <div className="hidden md:block">
               <Search />
@@ -208,7 +167,7 @@ const Navbar = () => {
                 />
               </svg>
             </button>
-            <div className="relative">
+            <div className="hidden lg:block relative">
               <svg
                 width="24"
                 height="24"
@@ -263,7 +222,7 @@ const Navbar = () => {
           <div
             className={`${
               openMobileMenu ? "flex" : "hidden"
-            } absolute top-30 left-0 w-full text-white bg-primary shadow-md py-5 flex-col items-center gap-4 px-5 md:hidden z-999`}
+            } absolute top-36 left-0 w-full text-white bg-primary shadow-md py-5 flex-col items-center gap-4 px-5 md:hidden z-999`}
           >
             <div className="block sm:hidden">
               <Search />
@@ -290,6 +249,39 @@ const Navbar = () => {
             >
               Dashboard
             </Link>
+
+            {/* Login / Logout */}
+            <div className="flex items-center gap-3">
+              {status === "authenticated" ? (
+                <button
+                  onClick={() => {
+                    signOut({ callbackUrl: "/" });
+                    toast.success("Logout Successful");
+                  }}
+                  className="font-medium text-red-500 hover:underline"
+                >
+                  Logout
+                </button>
+              ) : (
+                <span className="font-medium flex gap-2">
+                  <Link
+                    href="/api/auth/login"
+                    onClick={() => setOpenMobileMenu(false)}
+                    className="hover:underline"
+                  >
+                    Login
+                  </Link>
+                  /
+                  <Link
+                    href="/api/auth/login"
+                    onClick={() => setOpenMobileMenu(false)}
+                    className="hover:underline"
+                  >
+                    Register
+                  </Link>
+                </span>
+              )}
+            </div>
           </div>
         </nav>
       </div>

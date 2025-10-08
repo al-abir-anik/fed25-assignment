@@ -31,12 +31,13 @@ const BestSellers = () => {
   }
 
   return (
-    <div className="container mx-auto px-8 py-20">
-      <div className="w-full mx-auto lg:w-2/5 space-y-4 mb-10 lg:mb-16 text-center">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold whitespace-nowrap">
+    <section className="max-w-7xl w-full mx-auto px-4 sm:px-6 xl:px-8 py-16 sm:py-18 md:py-20 lg:py-24 xl:py-28 space-y-11 md:space-y-16 text-customBlack">
+      {/* heading */}
+      <div className="w-full sm:w-[640px] mx-auto text-center space-y-3 md:space-y-4">
+        <h2 className="text-4xl lg:text-5xl font-semibold">
           Handpicked Highlights
         </h2>
-        <p className="text-sm sm:text-base text-[#6b7280]">
+        <p className="text-[#6b7280]">
           There are many variations of available but the majority have suffered
           alteration in some form.
         </p>
@@ -47,13 +48,13 @@ const BestSellers = () => {
           No products found!
         </p>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-12">
-          {bestProducts.slice(0, 5).map((product, index) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12">
+          {bestProducts.slice(0, 4).map((product, index) => (
             <ProductCard key={index} product={product} />
           ))}
         </div>
       )}
-    </div>
+    </section>
   );
 };
 

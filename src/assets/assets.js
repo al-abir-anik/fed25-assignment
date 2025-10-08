@@ -9,21 +9,30 @@ export const productCategories = [
 export const heroSlider = [
   {
     id: "001",
-    title: "Samsung Galaxy s25",
+    title: "Galaxy s24 Ultra 5G",
     description:
       "Galaxy AI is here | Pro-grade camera, seamless 5G, and revolutionary AI – Redefine possibilities.",
-    offer: "Limited Time Offer 30% Off",
+    brand: "Samsung",
     price: 899,
     image: "/images/product_img17.png",
   },
   {
     id: "002",
-    title: "PlayStaion 5",
+    title: "PlayStation 5",
     description:
-      "Galaxy AI is here | Pro-grade camera, seamless 5G, and revolutionary AI – Redefine possibilities.",
-    offer: "Exclusive Deal 40% Off",
-    price: 599,
+      "Experience next-gen gaming with lightning-fast loading, stunning visuals, and immersive gameplay.",
+    brand: "Sony",
+    price: 499,
     image: "/images/product_img14.png",
+  },
+  {
+    id: "003",
+    title: "AirBuds Pro 3",
+    description:
+      "Enjoy crystal-clear sound, active noise cancellation, and all-day comfort with the latest AirBuds Pro.",
+    brand: "Apple",
+    price: 249,
+    image: "/images/product_img9.png",
   },
 ];
 
@@ -36,7 +45,7 @@ export const heroCard = [
   },
   {
     id: "68d832a6350a9120b2785900",
-    brand: "remi",
+    brand: "redmi",
     title: "Smart Watch 5 lite",
     image: "/images/product_img1.png",
   },
@@ -44,29 +53,29 @@ export const heroCard = [
 
 export const categoryShop = [
   {
-    name: "Audio",
+    name: "DSLR Camera",
     totalProduct: 6,
-    image: "/images/product_img9.png",
+    image: "/category_images/category_img1.png",
   },
   {
-    name: "Watch",
-    totalProduct: 4,
-    image: "/images/product_img13.png",
+    name: "Wireless Earbuds",
+    totalProduct: 6,
+    image: "/category_images/category_img2.png",
   },
   {
-    name: "Accessories",
+    name: "Wristwatch",
     totalProduct: 8,
-    image: "/images/product_img7.png",
+    image: "/category_images/category_img3.png",
   },
   {
-    name: "Security",
-    totalProduct: 2,
-    image: "/images/product_img16.png",
-  },
-  {
-    name: "Home decor",
+    name: "SkyFlyer Drone",
     totalProduct: 3,
-    image: "/images/product_img1.png",
+    image: "/category_images/category_img4.png",
+  },
+  {
+    name: "Smart Speaker",
+    totalProduct: 5,
+    image: "/category_images/category_img5.png",
   },
 ];
 
@@ -76,17 +85,20 @@ export const testimonials = [
       "“Working with this team has been a game-changer — their attention to detail, creativity, and commitment to deadlines exceeded every expectation I had.”",
     userName: "Kathryn Murphy",
     userTag: "Ceo",
+    userImage: "/userReview_image/reviewer1.png",
   },
   {
     review:
       "“What impressed me most wasn’t just the design, but how deeply they cared about delivering something that made a difference for our users.”",
     userName: "Theresa Webb",
     userTag: "Web Designer",
+    userImage: "/userReview_image/reviewer2.png",
   },
   {
     review:
       "“From the initial consultation to the final delivery, the process was seamless and incredibly professional — I’ve never felt more confident in a partnership.”",
     userName: "Jerome Bell",
     userTag: "Marketing Coordinator",
+    userImage: "/userReview_image/reviewer3.png",
   },
 ];

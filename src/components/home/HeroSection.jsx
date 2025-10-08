@@ -1,18 +1,21 @@
 "use client";
-import Image from "next/image";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
+import { heroCard, heroSlider } from "@/assets/assets";
 import "swiper/css";
 import "swiper/css/pagination";
-import { heroCard, heroSlider } from "@/assets/assets";
+import "../../style/sliderPagination.css";
 
 const HeroSection = () => {
   return (
-    <div className="container mx-auto px-8">
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 py-10 lg:py-14 min-h-[40rem]">
+    <section className="max-w-7xl w-full mx-auto px-4 xl:px-0 py-4 sm:py-6 md:py-10 lg:py-20">
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-5">
         {/* left slider */}
-        <div className="lg:col-span-2 grid">
+        <div
+          id="slide"
+          className="h-full px-6 sm:px-10 lg:px-14 py-7 grid lg:col-span-2 bg-[#111827] rounded-xl"
+        >
           <Swiper
             modules={[Pagination, Autoplay]}
             pagination={{ clickable: true }}
@@ -23,14 +26,14 @@ const HeroSection = () => {
           >
             {heroSlider.map((slide) => (
               <SwiperSlide key={slide.id}>
-                <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-between bg-[#111827] rounded-xl h-full px-6 sm:px-10 py-10">
+                <div className="h-full grid grid-cols-1 md:grid-cols-2 items-center justify-between ">
                   <div className="space-y-8 text-center md:text-left">
                     <div className="space-y-4">
-                      <p className="text-sm text-[#9ca3af] font-medium">
-                        {slide.offer}
+                      <p className="text-sm text-[#9ca3af] font-medium uppercase">
+                        {slide.brand}
                       </p>
                       <div className="space-y-3">
-                        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-white">
+                        <h2 className="text-[28px] sm:text-3xl lg:text-4xl font-semibold text-white">
                           {slide.title}
                         </h2>
                         <p className="text-sm sm:text-base text-[#9ca3af]">
@@ -41,20 +44,18 @@ const HeroSection = () => {
 
                     <Link
                       href={`/collection/${slide.id}`}
-                      className="inline-block px-5 py-2.5 text-base font-medium text-[#1f2937] bg-white rounded-lg hover:bg-gray-200 transition"
+                      className="block md:inline-block px-5 py-2.5 text-base font-medium text-[#1f2937] bg-white rounded-lg hover:bg-gray-200 transition"
                     >
                       Buy Now ${slide.price}
                     </Link>
                   </div>
 
                   {/* RIGHT IMAGE */}
-                  <div className="flex justify-center md:justify-end mt-8 md:mt-0">
-                    <Image
+                  <div className="py-6  flex justify-center md:justify-end mt-8 md:mt-0">
+                    <img
                       className="w-44 sm:w-60 md:w-72 drop-shadow-2xl"
                       src={slide.image}
                       alt={`Slide ${slide.id}`}
-                      width={300}
-                      height={308}
                     />
                   </div>
                 </div>
@@ -64,19 +65,19 @@ const HeroSection = () => {
         </div>
 
         {/* right hero cards */}
-        <div className="grid grid-rows-2 sm:grid-rows-1 sm:grid-cols-2 lg:grid-cols-1 gap-6 h-full">
+        <div className="grid grid-rows-2 sm:grid-rows-1 md:grid-cols-2 xl:grid-cols-1 gap-6 h-full">
           {heroCard.map((card) => (
             <div
               key={card.id}
-              className="flex justify-between items-center bg-[#f3f4f6] rounded-xl p-6"
+              className="w-full px-6 py-5 sm:px-7 flex justify-between items-center bg-[#f3f4f6] rounded-[10px]"
             >
               {/* Text */}
-              <div className="space-y-6">
-                <div>
-                  <p className="text-xs sm:text-sm font-medium text-[#6b7280] uppercase">
+              <div className="w-1/2 h-fit space-y-6">
+                <div className="space-y-2">
+                  <p className="text-sm font-medium text-[#6b7280] uppercase">
                     {card.brand}
                   </p>
-                  <p className="text-base sm:text-lg font-semibold text-[#374151] uppercase">
+                  <p className="text-lg lg:text-xl font-semibold text-[#374151] uppercase">
                     {card.title}
                   </p>
                 </div>
@@ -86,20 +87,18 @@ const HeroSection = () => {
               </div>
 
               {/* Image */}
-              <div className="flex justify-center">
-                <Image
-                  className="w-28 sm:w-32 md:w-36 drop-shadow-xl object-contain"
+              <div className="h-fit flex justify-center">
+                <img
+                  className="w-28 sm:w-32 md:w-36 h-fit drop-shadow-xl object-contain"
                   src={card.image}
                   alt={card.title}
-                  width={300}
-                  height={308}
                 />
               </div>
             </div>
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

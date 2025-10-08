@@ -1,41 +1,33 @@
+"use client";
 import { useAppContext } from "@/contexts/AppContext";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect } from "react";
 
 const Search = () => {
   const router = useRouter();
-  const { setSearch } = useAppContext();
-  const [query, setQuery] = useState("");
+  const { search, setSearch } = useAppContext();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setSearch(query);
-    router.push("/shop");
-  };
+  useEffect(() => {
+    if (search.length > 0) {
+      router.push("/shop");
+    }
+  }, [search, router]);
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="h-10 pl-3 flex items-center text-sm bg-white border border-gray-300 rounded-full overflow-hidden"
-    >
+    <div className="h-10 pl-3 flex items-center text-sm bg-white border border-gray-300 rounded-full overflow-hidden">
       <input
         type="search"
         placeholder="Search products"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
+        onKeyUp={(e) => setSearch(e.target.value)}
         className="px-2 w-full h-full outline-none text-black placeholder-gray-400"
       />
-      <button
-        type="submit"
-        className="h-full px-4 flex items-center justify-center text-white bg-primary/90 hover:bg-primary cursor-pointer"
-      >
+      <button className="h-full px-4 flex items-center justify-center text-white bg-primary/90 hover:bg-primary cursor-pointer">
         <svg
           width="24"
           height="24"
           viewBox="0 0 24 25"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          transform="rotate(0 0 0)"
         >
           <path
             fillRule="evenodd"
@@ -45,7 +37,7 @@ const Search = () => {
           />
         </svg>
       </button>
-    </form>
+    </div>
   );
 };
 
