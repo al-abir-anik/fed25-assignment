@@ -26,8 +26,8 @@ const Login = () => {
     });
 
     if (!result.error) {
-      router.push("/dashboard");
       toast.success("Login Successful");
+      router.push("/dashboard");
     } else {
       toast.error("Invalid credentials");
     }
@@ -35,7 +35,7 @@ const Login = () => {
 
   useEffect(() => {
     if (status === "authenticated") {
-      router.push("/");
+      router.push("/dashboard");
     }
   }, [status, router]);
 

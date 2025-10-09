@@ -34,11 +34,11 @@ const Footer = () => {
       {/* upper footer */}
       <div className="max-w-7xl w-full mx-auto py-11 lg:py-28 px-4 lg:px-8 flex flex-col lg:flex-row gap-12 lg:justify-between">
         {/* 1 - Brand */}
-        <div className="lg:w-[32%] flex flex-col justify-between space-y-8">
+        <div className="w-full sm:w-[378px] flex flex-col justify-between space-y-8">
           <div className="space-y-7">
             <Image src="/logo.png" alt="logo" width={120} height={28} />
-            <p className="text-[#6b7280]">
-              TailGrids comes with all the essential UI components you need to
+            <p className="text-[#6b7280] leading-6 tracking-[-0.2px]">
+              TailGrids comes with all the essential UI components you need to
               create beautiful websites based on Tailwind CSS.
             </p>
           </div>
@@ -56,54 +56,61 @@ const Footer = () => {
             </span>
           </div>
         </div>
-        
-        {/*  Clothing & Shoes */}
-        <div className="flex flex-col sm:flex-row gap-11 lg:gap-20">
+
+        {/*  Clothing & Shoes & news */}
+        <div className="flex flex-col lg:flex-row gap-11 lg:gap-20">
           {/* clothing */}
           <div className="space-y-5">
             <h2 className="text-xl font-semibold">Clothing</h2>
             <ul className="space-y-2">
               {clothing.map((link) => (
-                <li key={link} className="font-medium text-[#6b7280]">
+                <li
+                  key={link}
+                  className="font-medium text-[#6b7280] hover:underline cursor-pointer"
+                >
                   {link}
                 </li>
               ))}
             </ul>
           </div>
 
+          {/* shoes */}
           <div className="space-y-5">
             <h2 className="text-xl font-semibold">Shoes</h2>
             <ul className="space-y-2">
               {shoes.map((link) => (
-                <li key={link} className="font-medium text-[#6b7280]">
+                <li
+                  key={link}
+                  className="font-medium text-[#6b7280] hover:underline cursor-pointer"
+                >
                   {link}
                 </li>
               ))}
             </ul>
           </div>
-        </div>
 
-        {/* Newsletter */}
-        <div className="space-y-6 w-full sm:w-[80%] lg:w-auto">
-          <div className="space-y-2">
-            <h2 className="text-xl font-semibold">Newsletter</h2>
-            <p className="text-[#6b7280]">
-              Signup for the latest news and insights from TailGrids
-            </p>
+          {/* Newsletter */}
+          <div className="space-y-6 w-full sm:w-[364px]">
+            <div className="space-y-2">
+              <h2 className="text-xl font-semibold">Newsletter</h2>
+              <p className="text-base text-[#6b7280]">
+                Signup for latest news and insights from TailGrids
+              </p>
+            </div>
+            <form className="space-y-3">
+              <input
+                type="email"
+                placeholder="Email address"
+                className="w-full py-2.5 px-4 border border-[#d1d5db] outline-primary rounded-xl"
+              />
+              <button
+                type="submit"
+                className="w-full py-2.5 px-4 bg-primary text-white font-medium rounded-xl"
+              >
+                Subscribe
+              </button>
+            </form>
           </div>
-          <form className="space-y-3">
-            <input
-              type="email"
-              placeholder="Email address"
-              className="w-full py-2.5 px-4 border border-[#d1d5db] outline-primary rounded-xl"
-            />
-            <button
-              type="submit"
-              className="w-full py-2.5 px-4 bg-primary text-white font-medium rounded-xl"
-            >
-              Subscribe
-            </button>
-          </form>
         </div>
       </div>
 
@@ -164,9 +171,13 @@ const Footer = () => {
                   <img
                     src="/google play.png"
                     alt="google play"
-                    className="w-32"
+                    className="w-full sm:w-32"
                   />
-                  <img src="/app store.png" alt="app store" className="w-32" />
+                  <img
+                    src="/app store.png"
+                    alt="app store"
+                    className="w-full sm:w-32"
+                  />
                 </div>
               </div>
             </div>
