@@ -3,6 +3,7 @@ import { FaFacebook } from "react-icons/fa";
 import { RiTwitterXFill, RiInstagramFill } from "react-icons/ri";
 import { FaLinkedin } from "react-icons/fa";
 import { LuHeadset } from "react-icons/lu";
+import Link from "next/link";
 
 const Footer = () => {
   const socialLinks = [
@@ -36,9 +37,14 @@ const Footer = () => {
         {/* 1 - Brand */}
         <div className="w-full sm:w-[378px] flex flex-col justify-between space-y-8">
           <div className="space-y-7">
-            <Image src="/logo.png" alt="logo" width={120} height={28} />
-            <p className="text-[#6b7280] leading-6 tracking-[-0.2px]">
-              TailGrids comes with all the essential UI components you need to
+            <Link
+              href="/"
+              className="text-3xl font-black text-primary text-shadow-primary"
+            >
+              G<span className="text-2xl text-[#1F2937]">IZMO</span>
+            </Link>
+            <p className="mt-4 text-[#6b7280] leading-6 tracking-[-0.2px]">
+              Gizmo comes with all the essential UI components you need to
               create beautiful websites based on Tailwind CSS.
             </p>
           </div>
@@ -94,7 +100,7 @@ const Footer = () => {
             <div className="space-y-2">
               <h2 className="text-xl font-semibold">Newsletter</h2>
               <p className="text-base text-[#6b7280]">
-                Signup for latest news and insights from TailGrids
+                Signup for latest news and insights from Gizmo.
               </p>
             </div>
             <form className="space-y-3">
@@ -207,7 +213,7 @@ const Footer = () => {
 
           {/* 2 */}
           <div className="py-5 flex flex-col-reverse md:flex-row justify-between items-center gap-5 border-t border-[#F3F4F6] text-[#6b7280] text-center sm:text-left">
-            <p className="">© Copyright 2025 - TailGrids.</p>
+            <p className="">© Copyright 2025 - Gizmo.</p>
             <span className="flex flex-col sm:flex-row gap-3">
               <button>Refund Policy</button>
               <button>Terms of Services</button>

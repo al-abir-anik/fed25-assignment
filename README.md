@@ -1,6 +1,6 @@
 # FED25 - Mini Ecommerce Web App
 
-This is a **mini eCommerce web application** built for the FED25 assignment at Pimjo.  
+This is a **mini eCommerce web application** built for the FED25 assignment.  
 It includes a **Landing Page**, **Login Authentication**, and an **Ecommerce Dashboard** powered by **custom Next.js API routes**.
 
 ## 🔗 Live Demo

@@ -62,6 +62,7 @@ const Login = () => {
         <div className="w-full">
           <p>Email</p>
           <input
+            defaultValue="admin@example.com"
             placeholder="admin@example.com"
             className="border border-gray-200 rounded w-full p-2 mt-1 outline-primary placeholder:text-gray-400/80"
             {...register("email", {
@@ -83,6 +84,7 @@ const Login = () => {
           <p>Password</p>
           <div className="relative">
             <input
+              defaultValue="admin123"
               placeholder="admin123"
               className="border border-gray-200 rounded w-full p-2 mt-1 outline-primary placeholder:text-gray-400/80"
               {...register("password", {

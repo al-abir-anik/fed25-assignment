@@ -103,8 +103,11 @@ const Navbar = () => {
             >
               {openMobileMenu ? <IoClose /> : <RiMenu2Fill />}
             </button>
-            <Link href="/">
-              <Image src="/logo.png" alt="logo" width={120} height={28} />
+            <Link
+              href="/"
+              className="text-3xl font-black text-primary text-shadow-primary"
+            >
+              G<span className="text-2xl text-[#1F2937]">IZMO</span>
             </Link>
           </div>
 
