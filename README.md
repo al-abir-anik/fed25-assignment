@@ -1,11 +1,11 @@
-# FED25 - Mini Ecommerce Web App
+# GIZMO - Mini Ecommerce Web App
 
 This is a **mini eCommerce web application** built for the FED25 assignment.  
 It includes a **Landing Page**, **Login Authentication**, and an **Ecommerce Dashboard** powered by **custom Next.js API routes**.
 
 ## 🔗 Live Demo
 
-👉 **Live Site:** [https://fed25-assignment.vercel.app/](https://fed25-assignment.vercel.app/)
+👉 **Live Site:** [https://gizmo-server.vercel.app/](https://gizmo-server.vercel.app/)
 
 ---
 
@@ -72,3 +72,4 @@ src/
 ├─ providers/ # App providers (auth, theme, state)
 └─ style/
 └─ index.css # Global Tailwind CSS styles
+```
